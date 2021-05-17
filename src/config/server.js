@@ -3,7 +3,9 @@ import exphbs from 'express-handlebars'
 import mercadopago from 'mercadopago'
 import frontRouter from '../routes/front.routes'
 import paymentRouter from '../routes/payment.routes'
-require('dotenv').config()
+if(process.env.NODE_ENV !== 'production'){
+  require('dotenv').config()
+}
 
 export default class Server{
   constructor() {
