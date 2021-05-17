@@ -26,7 +26,7 @@ export default class Server{
   }
   middlewares() {
     this.app.use(express.json())
-    this.app.use('/assets',express.static(__dirname, '../assets'))
+    this.app.use('/assets',express.static(__dirname + '/../assets'))
     console.log(__dirname)
     this.app.use((req,res,next) => {
       res.header("Access-Control-Allow-Origins", "*")
