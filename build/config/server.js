@@ -17,7 +17,9 @@ var _payment = _interopRequireDefault(require("../routes/payment.routes"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 class Server {
   constructor() {
@@ -42,7 +44,7 @@ class Server {
 
   middlewares() {
     this.app.use(_express.default.json());
-    this.app.use('/assets', _express.default.static(__dirname + '/../assets'));
+    this.app.use('/assets', _express.default.static(__dirname + '/../../assets'));
     this.app.use((req, res, next) => {
       res.header("Access-Control-Allow-Origins", "*");
       res.header("Access-Control-Allow-Headers", "Authorization, Content-Type, Access-Content-Type, Accept");
